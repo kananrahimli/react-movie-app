@@ -1,0 +1,36 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    background-position: center;
+    background-size: cover !important;
+    overflow: hidden !important;
+    height: 90vh !important;
+    position: relative !important;
+    width: 100% !important;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100% !important;
+    object-fit: cover;
+    object-position: center;
+    height: 100% !important;
+  }
+
+  .backdrop{
+      background-color: rgba(0, 0, 0, 0.8);
+      height: 100%;
+      width: 100% !important;
+      position: absolute;
+      left: 0;
+      top: 0;
+  }
+
+  .header{
+      overflow: hidden !important;
+  }
+
+  
