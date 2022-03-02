@@ -1,6 +1,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import React,{ useEffect, useState } from 'react'
+import SwiperCore, { Autoplay } from 'swiper';
 import axios from "axios";
 // Import Swiper styles
 import "swiper/css";
@@ -10,42 +11,47 @@ import "swiper/css/pagination";
 import "./header.css"
 // import required modules
 import { EffectFade, Navigation, Pagination } from "swiper";
+import { useSelector,useDispatch } from "react-redux";
+import { getNowMovies } from '../../actions/index';
  export default function Header() {
-  const [nowMovies,setNowMovies]=useState(null);
-
+  SwiperCore.use([Autoplay])
+  const nowMovies=useSelector(state=>state.nowMovies)
+  const dispatch=useDispatch();
+  const getHeroMovies=()=>{
+    dispatch(getNowMovies())
+  }
   useEffect(()=>{
-    getNowMovies()
+    getHeroMovies()
   },[])
 
-  const getNowMovies=()=>{
-      axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=dd4d819639705d332d531217b4f7c6b6&page=1&language=en-US&region=US')
-      .then((res)=>{
-          console.log(res.data.results)
-          setNowMovies(res.data.results)
-      })
-  }
+  
   
   return (
-    <div className='header row'>
-
-        
-        
+    <div className='header '>
          <Swiper
         spaceBetween={30}
         effect={"fade"}
         
         modules={[EffectFade]}
+        loop={true}
+        autoplay={{ delay: 3000 }}
         className="mySwiper"
       >
 
         {nowMovies && nowMovies.map(nowmovie=>{
-            return <SwiperSlide className='row justify-content-end'>
+            return <SwiperSlide className=' ' key={nowmovie.id}>
 
-            <div className='backdrop'>
+            <div>
+            <img src={`https://image.tmdb.org/t/p/original/${nowmovie.backdrop_path}`} alt='ododod'  />
 
+            <div className="movie-detai backdrop pt-5">
+              <h1 className="moviename text-white mt-5 ml-4">{nowmovie.original_title}</h1>
+              <h3 className="text-white font-weight-bold text-warning mx-4 my-3">IMDB:{nowmovie.vote_average}</h3>
+              <p className="mx-4 text-white w-50">{nowmovie.overview}</p>
+            </div>
             </div>
            
-          <img src={`https://image.tmdb.org/t/p/original/${nowmovie.backdrop_path}`} alt='ododod' className='col-8' />
+          
         </SwiperSlide>
         })}
         
