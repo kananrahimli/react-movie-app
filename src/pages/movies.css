@@ -1,0 +1,14 @@
+.movies input {
+    height: 44px;
+    background: #212121;
+    border: 1px solid #716e6e;
+    color: #fff;
+    font-size: 15px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+
+.movie .header{
+    height: 80vh;
+}

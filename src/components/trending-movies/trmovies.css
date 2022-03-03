@@ -1,0 +1,98 @@
+.trending-movies h1 span{
+    color: #dc4666 ;
+    font-size: 14px;
+}   
+
+.trending-movies h1 {
+  font-size: 24px;
+  margin: 24px 0px;
+  color: #ffffff;
+}
+
+.trending-movies .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.trending-movies .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.trending-movies .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.trending-movies{
+    padding: 24px 36px;
+}
+
+.trending-movies-item{
+  height: 400px;
+  width: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  /* position: relative; */
+  cursor: pointer;
+}
+.trending-movies-item-img{
+  
+  position: relative;
+  width: 100%;
+  height: calc(100% - 80px);
+}
+
+
+
+.trending-movies .star{
+  position: absolute;
+  z-index: 20;
+  top: 20px;
+  left: 20px;
+  background: rgba(0,0,0,0.5);
+  padding: 2px 4px;
+  border-radius: 10px;
+}
+.trending-movies .date{
+  position: absolute;
+  z-index: 20;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0,0,0,0.5);
+  padding: 2px 4px;
+  border-radius: 10px;
+}
+
+.trending-movies-item-name{
+  /* position: absolute; */
+  bottom: 50px;
+  right: 20px;
+  z-index: 20;
+  /* color: #0000; */
+  background: rgba(0,0,0);
+  font-size: 18px;
+  padding: 8px 12px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
