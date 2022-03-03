@@ -10,5 +10,5 @@
 }
 
 .movie .header{
-    height: 80vh;
+    height: calc(100vh - 72px);
 }
