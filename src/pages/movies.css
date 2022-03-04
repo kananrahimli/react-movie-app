@@ -12,3 +12,11 @@
 .movie .header{
     height: calc(100vh - 72px);
 }
+
+.movies .prev,.next{
+    background: none;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    margin: 24px 16px;
+}

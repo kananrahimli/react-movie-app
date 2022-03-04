@@ -47,8 +47,8 @@
 }
 
 .trending-movies-item{
-  height: 400px;
-  width: 400px;
+  /* height: 400px;
+  width: 400px; */
   border-radius: 10px;
   overflow: hidden;
   /* position: relative; */

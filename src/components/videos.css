@@ -1,0 +1,25 @@
+.videos .play__icon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+}
+
+.videos .image img{
+    height: 100%;
+    width: 100% !important;
+}
+
+.videos .type{
+    margin-top: 10px;
+    color: #abb7c4 !important;
+    font-weight: 600;
+}
+.videos .name{
+    margin-top: 10px;
+}
+
+.videos .item{
+    overflow: hidden;
+}

@@ -2,8 +2,9 @@ const INITIAL_STATE = {
   nowMovies: [],
   trendingMovies: [],
   trendingTvShows: [],
-  allMovies:[],
-  movieItem:null,
+  allMovies: [],
+  movieItem: null,
+  movieVideos: [],
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -15,10 +16,14 @@ export const reducer = (state = INITIAL_STATE, action) => {
     case "GET_TR_TV_SHOWS":
       return { ...state, trendingTvShows: action.payload };
     case "GET_ALL_MOVIES":
-      return {...state, allMovies:action.payload }
-      case "GET_MOVIE_BY_ID":
-      return {...state, movieItem:action.payload }
+      return { ...state, allMovies: action.payload };
+    case "GET_MOVIE_BY_ID":
+      return { ...state, movieItem: action.payload };
+    case "SEARCH_MOVIE":
+      return { ...state, allMovies: action.payload };
+    case "GET_MOVIE_VIDEOS":
+      return { ...state, movieVideos: action.payload };
   }
-  
+
   return state;
 };

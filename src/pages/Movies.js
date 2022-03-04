@@ -1,27 +1,60 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import star from "./star.png";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import "./movies.css";
 import { getAllMovies } from "../actions";
+import { getSearchMovie } from "../actions";
 import { Link } from "react-router-dom";
 export default function Movies() {
   const allMovies = useSelector((state) => state.allMovies);
   const dispatch = useDispatch();
-
-  const getMovies = () => {
-    dispatch(getAllMovies());
+  const [page,setPage]=useState(1)
+  const [searchMovie,setSearchMovie]=useState('')
+  const getMovies = (page) => {
+    dispatch(getAllMovies(page));
   };
   useEffect(() => {
-    getMovies();
+    getMovies(page);
   }, []);
+
+  const prevPage=()=>{
+    if(page<=1){
+      setPage(1)
+    }else{
+      setPage(page-1)
+    }
+    getMovies(page);
+    
+  }
+  const nextPage=()=>{
+    
+    if(page===1){
+      setPage(2)
+      
+    }else{
+      setPage(page+1)
+    }
+    console.log(page);
+    
+    getMovies(page);
+    
+  }
+
+  const handleChange=(event)=>{
+    setSearchMovie(event.target.value)
+    dispatch(getSearchMovie(searchMovie))
+    if(searchMovie===''){
+      dispatch(getAllMovies(1))
+    }
+  }
   return (
     <div className="movies px-4 mt-5 pt-4">
       <h1 className="text-white mx-3">Movies</h1>
       <div className="row px-3">
         <div className="col-lg-6">
           <div className="input-group my-4">
-            <input type="text" placeholder="Search"></input>
+            <input type="text" placeholder="Search" name="search" onChange={handleChange} value={searchMovie}/>
           </div>
         </div>
       </div>
@@ -62,6 +95,11 @@ export default function Movies() {
               </div>
             );
           })}
+
+          <div className="movies-pagination mt-3 d-flex justify-content-center w-100">
+             <button className="prev" onClick={()=>prevPage()}>Prev</button>
+             <button className="next" onClick={()=>nextPage()}>Next</button>
+          </div>
       </div>
     </div>
   );

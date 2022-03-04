@@ -27,9 +27,9 @@ export const getTopRatedTvShows=()=>async dispatch=>{
     })
 }
 
-export const getAllMovies=()=>async dispatch=>{
+export const getAllMovies=(page)=>async dispatch=>{
     await axios.get(
-        'https://api.themoviedb.org/3/movie/top_rated?api_key=dd4d819639705d332d531217b4f7c6b6&page=1&language=en-US&region=US'
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=dd4d819639705d332d531217b4f7c6b6&page=${page}&language=en-US&region=US`
     ).then((res)=>{
         dispatch({type:'GET_ALL_MOVIES',payload:res.data.results})
     })
@@ -39,7 +39,27 @@ export const getMovieById=(id)=>async dispatch=>{
     await axios.get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=dd4d819639705d332d531217b4f7c6b6&page=1&language=en-US&region=US`
     ).then((res)=>{
-        console.log(res.data);
         dispatch({type:'GET_MOVIE_BY_ID',payload:res.data})
+    })
+}
+
+export const getSearchMovie=(searched)=>async dispatch=>{
+    
+    await axios.get(
+        `https://api.themoviedb.org/3/search/movie/?api_key=dd4d819639705d332d531217b4f7c6b6&query=${searched}`
+    ).then((res)=>{
+        
+        dispatch({type:'SEARCH_MOVIE',payload:res.data.results})
+    })
+}
+
+
+export const getMovieVideos=(id)=>async dispatch=>{
+    
+    await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=dd4d819639705d332d531217b4f7c6b6`
+    ).then((res)=>{
+      
+        dispatch({type:'GET_MOVIE_VIDEOS',payload:res.data.results})
     })
 }
