@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import star from "./star.png";
 // Import Swiper styles
@@ -10,21 +10,32 @@ import "./trmovies.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopRatedMovies } from "../../actions";
 import { Link } from "react-router-dom";
+import Loading from "../Loading.js/Loading";
 export default function TrMovies() {
   const trendingMovies = useSelector((state) => state.trendingMovies);
+  const loading=useSelector(state=>state.loading)
+ 
   const dispatch = useDispatch();
   const getTrendingMovies = () => {
     dispatch(getTopRatedMovies());
   };
   useEffect(() => {
     getTrendingMovies();
-    
-  }, []);
+  },[]);
+
+  
+  if(loading){
+    return(
+      <Loading></Loading>
+    )
+  }
+
   return (
     <div className="trending-movies">
-      <h1>
+      {!loading && <h1>
         Trending Movies <span>Explore all</span>
-      </h1>
+      </h1>}
+      
       <Swiper
         slidesPerView={1}
         spaceBetween={10}

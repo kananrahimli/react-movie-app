@@ -12,6 +12,7 @@ export default function OverView() {
     dispatch(getMovieById(id));
 
   }, []);
+  
   return (
     <div className="px-4 ">
       <div className="row justify-content-md-start justify-content-between my-3 align-items-center">

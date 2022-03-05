@@ -20,3 +20,7 @@
     border: none;
     margin: 24px 16px;
 }
+
+.movies .trending-movies{
+    height: 600px;
+}

@@ -12,9 +12,11 @@ import "./header.css";
 import { EffectFade, Navigation, Pagination } from "swiper";
 import { useSelector, useDispatch } from "react-redux";
 import { getNowMovies } from "../../actions/index";
+import Loading from "../Loading.js/Loading";
 export default function Header() {
   SwiperCore.use([Autoplay]);
   const nowMovies = useSelector((state) => state.nowMovies);
+  const loading =useSelector(state=>state.loading)
   const dispatch = useDispatch();
   const getHeroMovies = () => {
     dispatch(getNowMovies());
@@ -22,6 +24,12 @@ export default function Header() {
   useEffect(() => {
     getHeroMovies();
   }, []);
+
+  if(loading){
+    return(
+      <Loading></Loading>
+    )
+  }
 
   return (
     <div className="header ">

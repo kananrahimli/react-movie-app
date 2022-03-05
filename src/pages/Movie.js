@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, NavLink,NavNavLink } from "react-router-dom";
 import star from "./star.png";
 import "./movie.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getMovieById, getMovieVideos } from "../actions";
+import { getMovieById, getMovieVideos, getPersonCast } from "../actions";
 import OverView from "../components/movie-sections/OverView";
+import { Swiper, SwiperSlide } from "swiper/react";
 // import OverView from "../components/movie-sections/OverView";
 export default function Movie() {
   const movieItem = useSelector((state) => state.movieItem);
+  const movieCasts=useSelector(state=>state.movieCasts)
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
     getMovieItem(id);
     getMovieItemVideos(id)
+    getMovieCasts(id)
   }, []);
   const getMovieItem = (id) => {
     dispatch(getMovieById(id));
@@ -22,9 +25,13 @@ export default function Movie() {
     dispatch(getMovieVideos(id))
   }
 
+  const getMovieCasts=(id)=>{
+    dispatch(getPersonCast(id))
+  }
+
   return (
     <div className="movie">
-      {movieItem && (
+      {/* {movieItem && (
         <div className="header position-relative ">
           <div>
             <img
@@ -60,17 +67,62 @@ export default function Movie() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       <div className="movie-menu  d-flex justify-content-center mt-5">
         <ul className="list-unstyled text-white d-flex ">
-          <li> <Link to='overview'>Overview</Link> </li>
-          <li className="mx-5"><Link to='videos'>Videos</Link> </li>
-          <li>Description</li>
+          <li> <NavLink className="text-white" end  to='overview'>Overview</NavLink> </li>
+          <li className="mx-5"><NavLink className="text-white" end to='videos'>Videos</NavLink> </li>
+          <li><NavLink className="text-white" end to='photos'>Photos</NavLink></li>
+          
         </ul>
       </div>
 
       <Outlet />
+
+      <div className="movie-cast px-5 pt-5 mt-5">
+        <div className="row">
+        <Swiper
+        slidesPerView={1}
+        spaceBetween={10}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+        }}
+        className="mySwiper"
+      >
+        {movieCasts &&
+          movieCasts.map((person) => {
+            return (
+              <SwiperSlide>
+                <div className="trending-movies-item" key={person.id}>
+                  <div className="trending-movies-item-img ">
+                    <img
+                      src={`https://image.tmdb.org/t/p/original/${person.profile_path}`}
+                      className="" style={{width:'100%',height:'100%'}} alt=""
+                    />
+
+                  </div>
+                  <div className="trending-movies-item-name">
+                    <span className="text-white"> {person.name}</span>
+                  </div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+      </Swiper>
+        </div>
+      </div>
     </div>
   );
 }

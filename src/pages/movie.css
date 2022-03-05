@@ -1,0 +1,8 @@
+
+.movie .active-class {
+    color: red;
+  }
+  
+  .movie .active {
+    color: green;
+  }
