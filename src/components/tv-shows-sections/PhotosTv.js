@@ -16,7 +16,7 @@ export default function PhotosTv() {
       
     }
   
-  }, []);
+  }, [id]);
   return (
     <div className="photos px-3">
       <div className="row">

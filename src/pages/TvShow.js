@@ -15,12 +15,12 @@ export default function TvShow() {
   useEffect(() => {
     window.scrollTo(0, 0);
     getTvShow(id);
-  }, []);
-  if(loading){
-    return(
-      <Loading></Loading>
-    )
-  }
+  }, [id]);
+  // if(loading){
+  //   return(
+  //     <Loading></Loading>
+  //   )
+  // }
   return (
     <div className="tv-show ">
       <div className="header position-relative ">
@@ -74,8 +74,7 @@ export default function TvShow() {
           
         </ul>
       </div>
-
-      {loading &&   <Outlet />}
+   <Outlet />
     </div>
   );
 }

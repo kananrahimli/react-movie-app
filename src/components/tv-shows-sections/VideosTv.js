@@ -13,8 +13,7 @@ export default function VideosTv() {
   }
   useEffect(()=>{
     getTvShowMovies(id)
-  },[])
-  console.log(videos);
+  },[id])
   return (
     <div className="videos">
       <div className="row  justify-content-around ">

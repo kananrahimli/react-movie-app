@@ -11,7 +11,7 @@ export default function OverviewTv() {
   useEffect(() => {
     dispatch(getTvShowByID(id));
 
-  }, []);
+  }, [id]);
   
   return (
     <div className="px-4 ">

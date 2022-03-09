@@ -45,11 +45,11 @@ export default function Movie() {
     dispatch(getMovieRecommend(id));
   };
 
-  if(loading){
-    return(
-      <Loading></Loading>
-    )
-  }
+  // if(loading){
+  //   return(
+  //     <Loading></Loading>
+  //   )
+  // }
 
 
   return (
@@ -120,7 +120,7 @@ export default function Movie() {
         </ul>
       </div>
 
-    {loading&&   <Outlet />}
+    {   <Outlet />}
 
       <div className="movie-cast px-5 pt-5 mt-5">
         <h1 className="text-white mb-5">Persons</h1>
