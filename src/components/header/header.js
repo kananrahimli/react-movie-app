@@ -9,10 +9,10 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./header.css";
 // import required modules
-import { EffectFade, Navigation, Pagination } from "swiper";
+import { EffectFade } from "swiper";
 import { useSelector, useDispatch } from "react-redux";
 import { getNowMovies } from "../../actions/index";
-import Loading from "../Loading.js/Loading";
+// import Loading from "../Loading.js/Loading";
 export default function Header() {
   SwiperCore.use([Autoplay]);
   const nowMovies = useSelector((state) => state.nowMovies);
@@ -27,7 +27,8 @@ export default function Header() {
 
   if(loading){
     return(
-      <Loading></Loading>
+      // <Loading></Loading>
+      null
     )
   }
 

@@ -10,7 +10,7 @@ function Home() {
   const loading =useSelector(state=>state.loading)
   
   return (
-    <div>
+    <div  className=" ">
         <Header></Header>
     
         <TrMovies></TrMovies>

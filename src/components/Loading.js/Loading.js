@@ -1,39 +1,21 @@
-import React, { useState } from 'react'
-const initial_placeholders=[
-    {test:''},{test:''},{test:''},{test:''},{test:''},{test:''},{test:''},{test:''}
-  ]
-   
+import React, { useState } from "react";
+import ContentLoader from "react-content-loader";
+import "./loading.css";
 export default function Loading() {
-  const [placeholders,setPlaceholders]  = useState (initial_placeholders)
-
   return (
-    <div>
-       
-      <div className="movies px-4 mt-5 pt-4">
-      
-      
-      <div className="row ">
-        {
-          placeholders.map((movie) => {
-            return (
-              <div className="col-md-3 px-0 mx-0 mt-5">
-                  <div className="trending-movies notSlider" >
-                    <div className="trending-movies-item-img " >
-                    {<div className="skeleton skeleton-img" ></div>}
-                    </div>
-                    <div className="trending-movies-item-name">
-                      
-                    {  <div className="skeleton skeleton-text"></div>} 
-                    </div>
-                  </div>
-              
-              </div>
-            );
-          })}
-
+    <div className="loading">
+      <div className="movies px-4 mt-5 pt-4 d-flex justify-content-center align-items-center ">
+        <ContentLoader
+          viewBox="0 0 400 160"
+          height={160}
+          width={400}
+          backgroundColor="transparent"
+        >
+          <circle cx="150" cy="86" r="8" />
+          <circle cx="194" cy="86" r="8" />
+          <circle cx="238" cy="86" r="8" />
+        </ContentLoader>
       </div>
     </div>
-
-    </div>
-  )
+  );
 }

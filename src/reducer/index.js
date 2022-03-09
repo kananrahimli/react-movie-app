@@ -4,10 +4,14 @@ const INITIAL_STATE = {
   trendingTvShows: [],
   allMovies: [],
   movieItem: null,
-  tvShowItem:[],
+  tvShowItem: [],
   movieVideos: [],
   movieImages: [],
   movieCasts: [],
+  allTvShows: [],
+  tvShowVideos: [],
+  tvShowImages: [],
+  recommendMovies: [],
   loading: true,
 };
 
@@ -22,9 +26,11 @@ export const reducer = (state = INITIAL_STATE, action) => {
     case "GET_ALL_MOVIES":
       return { ...state, allMovies: action.payload, loading: false };
     case "GET_MOVIE_BY_ID":
-      return { ...state, movieItem: action.payload };
+      return { ...state, movieItem: action.payload , loading: false};
     case "GET_TV_BY_ID":
-      return { ...state, tvShowItem: action.payload };
+      return { ...state, tvShowItem: action.payload, loading: false };
+    case "GET_MOVIE_RECOMMEND":
+      return { ...state, recommendMovies: action.payload };
     case "SEARCH_MOVIE":
       return { ...state, allMovies: action.payload, loading: false };
     case "GET_MOVIE_VIDEOS":
@@ -33,6 +39,14 @@ export const reducer = (state = INITIAL_STATE, action) => {
       return { ...state, movieImages: action.payload };
     case "GET_MOVIE_CASTS":
       return { ...state, movieCasts: action.payload };
+    case "GET_TV_VIDEOS":
+      return { ...state, tvShowVideos: action.payload };
+    case "GET_ALL_TV_SHOWS":
+      return { ...state, allTvShows: action.payload, loading: false };
+    case "SEARCH_TV_SHOWS":
+      return { ...state, allTvShows: action.payload, loading: false };
+    case "GET_TV_IMAGES":
+      return { ...state, tvShowImages: action.payload };
     case "SHOW_LOADING":
       return { ...state, loading: action.payload };
   }

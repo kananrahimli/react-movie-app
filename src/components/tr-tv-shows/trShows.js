@@ -11,6 +11,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTopRatedTvShows } from "../../actions";
 import Loading from "../Loading.js/Loading";
 import { Link } from "react-router-dom";
+import SwiperCore, { Autoplay } from 'swiper';
+
+SwiperCore.use([Autoplay]);
 export default function TvShows() {
   const trendingTvShows = useSelector((state) => state.trendingTvShows);
   const loading = useSelector((state) => state.loading);
@@ -23,18 +26,24 @@ export default function TvShows() {
   }, []);
 
   if (loading) {
-    return <Loading></Loading>;
+    return null
+    // return <Loading></Loading>;
   }
 
   return (
     <div className="trending-movies">
       {!loading && (
         <h1>
-          Trending Tv Shows <span>Explore all</span>
+          Trending Tv Shows <span><Link to='/tv-shows'>Explore all</Link></span>
         </h1>
       )}
 
       <Swiper
+      loop={true}
+      autoplay={{
+          delay: 3000,
+          disableOnInteraction: false
+      }}
         slidesPerView={1}
         spaceBetween={10}
         breakpoints={{
