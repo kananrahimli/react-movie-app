@@ -16,11 +16,11 @@ export default function TvShow() {
     window.scrollTo(0, 0);
     getTvShow(id);
   }, [id]);
-  // if(loading){
-  //   return(
-  //     <Loading></Loading>
-  //   )
-  // }
+  if(loading){
+    return(
+      <Loading></Loading>
+    )
+  }
   return (
     <div className="tv-show ">
       <div className="header position-relative ">
@@ -74,7 +74,7 @@ export default function TvShow() {
           
         </ul>
       </div>
-   <Outlet />
+    <Outlet />
     </div>
   );
 }

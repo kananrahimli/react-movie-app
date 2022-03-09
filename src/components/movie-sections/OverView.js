@@ -1,17 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getMovieById } from "../../actions";
+import {  useSelector } from "react-redux";
+// import { useParams } from "react-router-dom";
+// import { getMovieById } from "../../actions";
 
 export default function OverView() {
   const movieItem = useSelector((state) => state.movieItem);
-  const dispatch = useDispatch();
-
-  const { id } = useParams();
-  useEffect(() => {
-    dispatch(getMovieById(id));
-
-  }, []);
+  
   
   return (
     <div className="px-4 ">

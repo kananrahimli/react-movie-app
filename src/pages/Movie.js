@@ -45,11 +45,11 @@ export default function Movie() {
     dispatch(getMovieRecommend(id));
   };
 
-  // if(loading){
-  //   return(
-  //     <Loading></Loading>
-  //   )
-  // }
+    if(loading){
+      return(
+        <Loading></Loading>
+      )
+    }
 
 
   return (
@@ -113,14 +113,14 @@ export default function Movie() {
             </NavLink>{" "}
           </li>
           <li>
-            <NavLink className="text-white" to="photos">
+            <NavLink className="text-white" to={`/movie/${id}/photos`}>
               Photos
             </NavLink>
           </li>
         </ul>
       </div>
 
-    {   <Outlet />}
+      <Outlet />
 
       <div className="movie-cast px-5 pt-5 mt-5">
         <h1 className="text-white mb-5">Persons</h1>

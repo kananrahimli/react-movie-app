@@ -5,13 +5,13 @@ import { getTvShowByID } from "../../actions";
 
 export default function OverviewTv() {
   const tvShowItem = useSelector((state) => state.tvShowItem);
-  const dispatch = useDispatch();
-  console.log(tvShowItem);
-  const { id } = useParams();
-  useEffect(() => {
-    dispatch(getTvShowByID(id));
+  // const dispatch = useDispatch();
+  // console.log(tvShowItem);
+  // const { id } = useParams();
+  // useEffect(() => {
+  //   dispatch(getTvShowByID(id));
 
-  }, [id]);
+  // }, [id]);
   
   return (
     <div className="px-4 ">
